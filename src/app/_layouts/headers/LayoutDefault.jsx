@@ -45,8 +45,15 @@ const DefaultHeader = () => {
         <div className="sb-top-bar-bg"></div>
         <div className="container">
           <div className="sb-top-bar">
-            <Link href="/" className="sb-logo-frame">
+            {/* <Link href="/" className="sb-logo-frame">
               <p className="sb-text-logo sb-text-3xl ">Crumbs & Co</p>
+            </Link> */}
+            <Link href="/" className="sb-logo-frame">
+              {/* logo img */}
+              <img
+                src={AppData.header.logo.image}
+                alt={AppData.header.logo.alt}
+              />
             </Link>
             {/* menu */}
             <div className="sb-right-side">

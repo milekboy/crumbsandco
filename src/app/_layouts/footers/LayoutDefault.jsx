@@ -14,7 +14,11 @@ const DefaultFooter = () => {
         <div className="container">
           <div className="sb-footer-frame">
             <Link href="/" className="sb-logo-frame">
-              <p className="sb-text-logo sb-text-3xl ">Crumbs & Co</p>
+              {/* logo img */}
+              <img
+                src={AppData.header.logo.image}
+                alt={AppData.header.logo.alt}
+              />
             </Link>
             <ul className="sb-social">
               {AppData.social.map((item, key) => (

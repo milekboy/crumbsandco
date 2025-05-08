@@ -1,1 +1,9 @@
 node_modules
+# Build outputs
+.next/
+out/
+node_modules/
+*.log
+
+# Optional: media-heavy folders
+public/img/
