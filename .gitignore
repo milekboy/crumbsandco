@@ -7,3 +7,6 @@ node_modules/
 
 # Optional: media-heavy folders
 public/img/
+
+!public/img/ui/
+!public/img/ui/**
