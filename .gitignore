@@ -5,8 +5,3 @@ out/
 node_modules/
 *.log
 
-# Optional: media-heavy folders
-public/img/
-
-!public/img/ui/
-!public/img/ui/**
