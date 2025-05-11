@@ -27,9 +27,11 @@ const Hero = ({ type }) => {
                   <span className="sb-suptitle sb-mb-30">{Data.subtitle}</span>
                   <h1
                     className="sb-mb-30"
+                    //
                     dangerouslySetInnerHTML={{ __html: Data.title }}
                   />
                   <p
+                    // className="text-amber-600"
                     className="sb-text sb-text-lg sb-mb-30"
                     dangerouslySetInnerHTML={{ __html: Data.description }}
                   />

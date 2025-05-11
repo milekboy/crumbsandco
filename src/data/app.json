@@ -23,12 +23,8 @@
         "link": "/",
         "children": [
           {
-            "label": "Homepage 1",
+            "label": "Homepage",
             "link": "/"
-          },
-          {
-            "label": "Homepage 2",
-            "link": "/home-2"
           }
         ]
       },
@@ -100,36 +96,7 @@
           }
         ]
       },
-      {
-        "label": "Blog",
-        "link": "/blog-3",
-        "children": [
-          {
-            "label": "Blog",
-            "link": "/blog-3"
-          },
-          {
-            "label": "Blog list",
-            "link": "/blog"
-          },
-          {
-            "label": "Blog list 2",
-            "link": "/blog-2"
-          },
-          {
-            "label": "Publication",
-            "link": "/blog/beet-and-burrata-salad-with-fried-bread"
-          },
-          {
-            "label": "Publication 2",
-            "link": "/blog/creamy-kale-pasta"
-          },
-          {
-            "label": "Publication 3",
-            "link": "/blog/incredible-vegan-mac-and-cheese"
-          }
-        ]
-      },
+
       {
         "label": "Shop",
         "link": "/shop",
@@ -200,7 +167,7 @@
     {
       "image": "/img/instagram/1.jpg",
       "title": "Image #1",
-      "link": "https://instagram.com/"
+      "link": "https://www.instagram.com/p/DJXXUkgI9xQ/?igsh=bXM4dnJianJ4N3A2"
     },
     {
       "image": "/img/instagram/2.jpg",

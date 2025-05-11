@@ -10,7 +10,7 @@ import CartData from "@data/cart.json";
 import MiniCart from "@layouts/cart/MiniCart";
 import MiniSidebar from "@layouts/sidebar/MiniSidebar";
 
-const DefaultHeader = () => {
+const DefaultHeader = ({ setLoading }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const [miniCart, setMiniCart] = useState(false);
@@ -22,8 +22,10 @@ const DefaultHeader = () => {
   };
 
   const handleSubMenuClick = (index, e) => {
-    if (window !== undefined) {
-      if (window.innerWidth <= 992) {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth > 992) {
+        setLoading(true);
+      } else {
         e.preventDefault();
         setOpenSubMenu(openSubMenu === index ? false : index);
       }
@@ -89,7 +91,12 @@ const DefaultHeader = () => {
                                 isPathActive(subitem.link) ? "sb-active" : ""
                               }
                             >
-                              <Link href={subitem.link}>{subitem.label}</Link>
+                              <Link
+                                href={subitem.link}
+                                onClick={() => setLoading?.(true)}
+                              >
+                                {subitem.label}
+                              </Link>
                             </li>
                           ))}
                         </ul>
