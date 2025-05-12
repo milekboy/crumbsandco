@@ -43,7 +43,7 @@ const MiniSidebar = () => {
           ))}
         </ul>
         <hr />
-        <div className="sb-ib-title-frame sb-mb-30">
+        {/* <div className="sb-ib-title-frame sb-mb-30">
           <h4>Latest publications</h4>
           <i className="fas fa-arrow-down"></i>
         </div>
@@ -61,7 +61,7 @@ const MiniSidebar = () => {
               <p className="sb-text sb-text-sm">{item.short}</p>
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
       <div className="sb-info-bar-footer">
         <ul className="sb-social">
