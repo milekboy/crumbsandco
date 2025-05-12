@@ -29,40 +29,12 @@
         ]
       },
       {
-        "label": "Pages",
-        "link": "/about",
+        "label": "Reservation",
+        "link": "/reservation",
         "children": [
-          {
-            "label": "About 1",
-            "link": "/about"
-          },
-          {
-            "label": "About 2",
-            "link": "/about-2"
-          },
-          {
-            "label": "Gallery 1",
-            "link": "/gallery"
-          },
-          {
-            "label": "Gallery 2",
-            "link": "/gallery-2"
-          },
-          {
-            "label": "Reviews",
-            "link": "/reviews"
-          },
           {
             "label": "Reservation",
             "link": "/reservation"
-          },
-          {
-            "label": "FAQ",
-            "link": "/faq"
-          },
-          {
-            "label": "404",
-            "link": "/404"
           }
         ]
       },
@@ -134,7 +106,12 @@
       {
         "label": "Contact",
         "link": "/contact",
-        "children": 0
+        "children": [
+          {
+            "label": "Contat",
+            "link": "/contact"
+          }
+        ]
       }
     ]
   },

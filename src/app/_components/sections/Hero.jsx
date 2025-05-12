@@ -41,7 +41,7 @@ const Hero = ({ type }) => {
                     <span className="sb-icon">
                       <img src={Data.button1.icon} alt="icon" />
                     </span>
-                    <span>{Data.button1.label}</span>
+                    <span className="text-black">{Data.button1.label}</span>
                   </Link>
                   {/* button end */}
                   {/* button */}
@@ -52,7 +52,7 @@ const Hero = ({ type }) => {
                     <span className="sb-icon">
                       <img src={Data.button2.icon} alt="icon" />
                     </span>
-                    <span>{Data.button2.label}</span>
+                    <span className="text-black">{Data.button2.label}</span>
                   </Link>
                   {/* button end */}
                 </div>

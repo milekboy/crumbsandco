@@ -124,6 +124,9 @@ ul {
   &.sb-text-xs {
     font-size: 12px;
   }
+  &.sb-texts {
+    color: $cml;
+  }
 
   &.sb-text-sm {
     font-size: 14px;
@@ -671,7 +674,7 @@ buttons
   font-size: 14px;
   margin-right: 15px;
   margin-bottom: 10px;
-  background-color: $c5;
+  background-color: $cml;
   transition: $tr;
 
   & .sb-icon {
