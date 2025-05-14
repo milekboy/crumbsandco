@@ -3,6 +3,16 @@
 background
 
 ***************************/
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: $cml;
+}
+
 .sb-bg-1 {
   border-left: solid 30px $c4;
   border-right: solid 30px $c4;
@@ -16,7 +26,7 @@ background
     position: relative;
 
     &:after {
-      content: '';
+      content: "";
       height: 40vw;
       width: 300%;
       background-color: $c6;
@@ -40,7 +50,7 @@ background
     position: relative;
 
     &:after {
-      content: '';
+      content: "";
       height: 1200px;
       width: 1200px;
       position: absolute;
@@ -95,7 +105,7 @@ illustration 1
   float: right;
   border-bottom-right-radius: 400px;
   border-bottom-left-radius: 400px;
-  box-shadow: 0 8px 8px -9px rgba(0,0,0,.4);
+  box-shadow: 0 8px 8px -9px rgba(0, 0, 0, 0.4);
 
   & .sb-girl {
     position: absolute;
@@ -115,7 +125,8 @@ illustration 1
     border: solid 25px $c4;
     right: 10%;
     bottom: 15%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -127,7 +138,7 @@ illustration 1
     width: 25px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 3s infinite ease-in-out;
   }
 
@@ -139,7 +150,7 @@ illustration 1
     height: 55px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s infinite ease-in-out;
   }
 
@@ -151,7 +162,7 @@ illustration 1
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -163,7 +174,8 @@ illustration 1
     border: solid 10px $c4;
     left: 28%;
     bottom: 45%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1.5s infinite ease-in-out;
   }
 
@@ -294,7 +306,7 @@ illustration 1 (2)
     font-size: 16px;
     letter-spacing: 0;
     border-radius: 20px;
-    box-shadow: 0 2px 46px 0 rgba(0,0,0,0.36);
+    box-shadow: 0 2px 46px 0 rgba(0, 0, 0, 0.36);
 
     & span {
       display: inline-block;
@@ -305,7 +317,7 @@ illustration 1 (2)
 
     &:after {
       transform: rotate(45deg);
-      content: '';
+      content: "";
       position: absolute;
       z-index: 9;
       bottom: -5px;
@@ -324,7 +336,8 @@ illustration 1 (2)
     border: solid 22px $c4;
     right: 0;
     top: 35%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -336,7 +349,7 @@ illustration 1 (2)
     width: 25px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 3s infinite ease-in-out;
   }
 
@@ -348,7 +361,7 @@ illustration 1 (2)
     height: 55px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s infinite ease-in-out;
   }
 
@@ -360,7 +373,7 @@ illustration 1 (2)
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -372,7 +385,8 @@ illustration 1 (2)
     border: solid 10px $c4;
     left: 15%;
     bottom: 30%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1.5s infinite ease-in-out;
   }
 
@@ -453,7 +467,7 @@ illustration 1 (404)
   float: right;
   border-bottom-right-radius: 400px;
   border-bottom-left-radius: 400px;
-  box-shadow: 0 8px 8px -9px rgba(0,0,0,.4);
+  box-shadow: 0 8px 8px -9px rgba(0, 0, 0, 0.4);
 
   & .sb-man {
     position: absolute;
@@ -473,7 +487,8 @@ illustration 1 (404)
     border: solid 25px $c4;
     right: 15%;
     bottom: 15%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -485,7 +500,7 @@ illustration 1 (404)
     width: 25px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 3s infinite ease-in-out;
   }
 
@@ -497,7 +512,7 @@ illustration 1 (404)
     height: 55px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s infinite ease-in-out;
   }
 
@@ -509,7 +524,7 @@ illustration 1 (404)
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -521,7 +536,8 @@ illustration 1 (404)
     border: solid 10px $c4;
     left: 24%;
     bottom: 55%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1.5s infinite ease-in-out;
   }
 
@@ -596,7 +612,7 @@ illustration 2
     height: 90%;
     bottom: 10%;
     left: 0;
-    box-shadow: 0 6px 8px -6px rgba(0,0,0,.1);
+    box-shadow: 0 6px 8px -6px rgba(0, 0, 0, 0.1);
 
     & .sb-interior {
       width: 100%;
@@ -626,7 +642,8 @@ illustration 2
     border: solid 20px $c4;
     left: 15%;
     bottom: 2%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -639,7 +656,7 @@ illustration 2
     width: 20px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 3s infinite ease-in-out;
   }
 
@@ -652,7 +669,7 @@ illustration 2
     height: 55px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s infinite ease-in-out;
   }
 
@@ -665,7 +682,8 @@ illustration 2
     border: solid 7px $c4;
     left: 15%;
     top: -2%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -677,7 +695,7 @@ illustration 2
     right: 10%;
     width: 40%;
     padding: 30px;
-    box-shadow: 6px 6px 8px -6px rgba(0,0,0,.1);
+    box-shadow: 6px 6px 8px -6px rgba(0, 0, 0, 0.1);
 
     & .sb-exp-content {
       padding: 15px;
@@ -765,7 +783,8 @@ illustration 3
     border: solid 20px $c4;
     left: 23%;
     bottom: 30%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -777,7 +796,7 @@ illustration 3
     height: 35px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -789,7 +808,7 @@ illustration 3
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 
@@ -801,7 +820,7 @@ illustration 3
     height: 10px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -872,7 +891,8 @@ illustration 4
     border: solid 15px $c4;
     right: 15%;
     bottom: 0;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -884,7 +904,7 @@ illustration 4
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -896,7 +916,7 @@ illustration 4
     height: 10px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 }
@@ -934,7 +954,8 @@ illustration 5
     border: solid 15px $c4;
     left: 30%;
     bottom: 0;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -946,7 +967,7 @@ illustration 5
     height: 20px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -958,7 +979,7 @@ illustration 5
     height: 10px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 }
@@ -996,7 +1017,8 @@ illustration 6
     border: solid 25px $c4;
     right: 3%;
     bottom: 10%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -1008,7 +1030,7 @@ illustration 6
     height: 35px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -1020,7 +1042,7 @@ illustration 6
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 
@@ -1032,7 +1054,7 @@ illustration 6
     height: 10px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -1044,7 +1066,8 @@ illustration 6
     border: solid 10px $c4;
     left: 25%;
     top: 30%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -1086,7 +1109,7 @@ illustration 7
     height: 100%;
     top: 0;
     left: 0;
-    box-shadow: 0 6px 8px -6px rgba(0,0,0,.1);
+    box-shadow: 0 6px 8px -6px rgba(0, 0, 0, 0.1);
 
     & .sb-interior {
       width: 100%;
@@ -1112,8 +1135,9 @@ illustration 7
       align-items: center;
       color: $c4 !important;
       padding-left: 3px;
-      box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
-      text-shadow: 0 3px 6px rgba(0,0,0,.09);
+      box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+        0 3px 6px 0 rgba(0, 0, 0, 0.09);
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.09);
       transition: $tr;
 
       &:hover {
@@ -1131,7 +1155,8 @@ illustration 7
     border: solid 15px $c4;
     right: 5%;
     bottom: -4%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -1144,7 +1169,7 @@ illustration 7
     width: 20px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 3s infinite ease-in-out;
   }
 
@@ -1157,7 +1182,7 @@ illustration 7
     height: 55px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s infinite ease-in-out;
   }
 
@@ -1170,7 +1195,8 @@ illustration 7
     border: solid 7px $c4;
     left: 15%;
     top: -4%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 }
@@ -1246,7 +1272,8 @@ illustration 8
     border: solid 25px $c4;
     left: -3%;
     bottom: 10%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -1258,7 +1285,7 @@ illustration 8
     height: 35px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -1270,7 +1297,7 @@ illustration 8
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 
@@ -1282,7 +1309,7 @@ illustration 8
     height: 10px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 4s infinite ease-in-out;
   }
 
@@ -1294,7 +1321,8 @@ illustration 8
     border: solid 10px $c4;
     right: 33%;
     bottom: 0;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 1s infinite ease-in-out;
   }
 
@@ -1350,7 +1378,8 @@ illustration 9
     border: solid 15px $c4;
     left: -10%;
     bottom: 45%;
-    box-shadow: inset 0 3px 6px 0 rgba(0,0,0,.09) , 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: inset 0 3px 6px 0 rgba(0, 0, 0, 0.09),
+      0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima3 3s 0.5s infinite ease-in-out;
   }
 
@@ -1362,7 +1391,7 @@ illustration 9
     height: 35px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 2s 2s infinite ease-in-out;
   }
 
@@ -1374,7 +1403,7 @@ illustration 9
     height: 15px;
     background-color: $c5;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,.09);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.09);
     animation: anima1 3s 3s infinite ease-in-out;
   }
 }

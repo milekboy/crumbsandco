@@ -23,3 +23,12 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: #f1c126;
+}

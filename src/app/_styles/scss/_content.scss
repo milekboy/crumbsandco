@@ -3,6 +3,16 @@
 banner
 
 ***************************/
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: $cml;
+}
 .sb-banner {
   &.sb-banner-with-bg {
     position: relative;
@@ -385,8 +395,8 @@ popup
   transition: $tr-lg;
 
   & .sb-popup-body {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.05);
-    transform: scale(.8);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    transform: scale(0.8);
     opacity: 0;
     display: flex;
     position: relative;
@@ -593,7 +603,7 @@ contact
   background-color: $c4;
   padding: 30px;
   text-align: center;
-  box-shadow: 0 0 8px -2px rgba(0,0,0,.1);
+  box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
 
   & .sb-form-content {
     position: relative;
@@ -716,7 +726,7 @@ contact
     width: 100%;
 
     &:before {
-      content: '';
+      content: "";
       height: 2px;
       width: 0;
       bottom: 1px;
@@ -879,7 +889,7 @@ blog
     width: 100%;
     padding-bottom: 65%;
     background-color: $c6;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
 
     & img {
       position: absolute;
@@ -982,7 +992,7 @@ sidebar
   width: 100%;
   padding: 30px;
   background-color: $c4;
-  box-shadow: 0 0 8px -2px rgba(0,0,0,.1);
+  box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
 
   & .sb-sidebar {
     border: dotted 3px $c3;
@@ -1035,7 +1045,7 @@ gallery
 
   & .sb-zoom {
     opacity: 0;
-    transform: scale(.5);
+    transform: scale(0.5);
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -1178,7 +1188,7 @@ team
       padding-bottom: 120%;
 
       &:before {
-        transform: scale(.9) translateY(-10%);
+        transform: scale(0.9) translateY(-10%);
       }
 
       & img {
@@ -1284,7 +1294,7 @@ radio
   margin-bottom: 15px;
 }
 
-.sb-radio input[type=radio] {
+.sb-radio input[type="radio"] {
   position: absolute;
   visibility: hidden;
 }
@@ -1318,7 +1328,7 @@ radio
 .sb-radio .sb-check::before {
   display: block;
   position: absolute;
-  content: '';
+  content: "";
   border-radius: 100%;
   height: 13px;
   width: 13px;
@@ -1328,11 +1338,11 @@ radio
   transition: $tr;
 }
 
-.sb-radio input[type=radio]:checked ~ .sb-check {
+.sb-radio input[type="radio"]:checked ~ .sb-check {
   border-color: $c5;
 }
 
-.sb-radio input[type=radio]:checked ~ .sb-check::before {
+.sb-radio input[type="radio"]:checked ~ .sb-check::before {
   background: $c5;
 }
 /***************************
@@ -1454,7 +1464,7 @@ faq
     &:after,
     &:before {
       background: #000;
-      content: '';
+      content: "";
       height: 2px;
       left: 0;
       top: 0;
@@ -1526,7 +1536,19 @@ datepicker
 }
 
 .sb-text {
-  h1, h2, h3, h4, h5, h6, ul, ol, iframe, object, table, blockquote, p {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  ol,
+  iframe,
+  object,
+  table,
+  blockquote,
+  p {
     margin-bottom: 30px;
 
     &:last-child {
