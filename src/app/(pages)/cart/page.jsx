@@ -1,23 +1,121 @@
-import React from "react";
-
+"use client";
+import { useState, useEffect } from "react";
+import Toast from "../../_components/Toast";
+import NetworkInstance from "../../api/NetworkInstance";
 import AppData from "@data/app.json";
 import CartData from "@data/cart.json";
 
 import PageBanner from "@components/PageBanner";
-import CartItem from "@components/products/CartItem"
+import CartItem from "@components/products/CartItem";
 
 import Link from "next/link";
 
-export const metadata = {
-  title: {
-		default: "Shopping Cart",
-	},
-  description: AppData.settings.siteDescription,
-}
-
 const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [toast, setToast] = useState(null);
+
+  const networkInstance = NetworkInstance();
+
+  async function getCart() {
+    try {
+      const cartId = localStorage.getItem("cartId");
+      if (!cartId) {
+        console.log("No cart ID found.");
+        return;
+      }
+      // console.log(cartId);
+      const res = await networkInstance.get(`/cart/view/${cartId}`);
+      // console.log("Fetched cart:", res.data.items);
+      setCartItems(res.data.items);
+    } catch (err) {
+      console.log("Error fetching cart:", err?.response?.data || err);
+    }
+  }
+  useEffect(() => {
+    getCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const updateQuantity = async (productId, type) => {
+    const cartId = localStorage.getItem("cartId");
+    if (!cartId) {
+      console.log("No cart ID found.");
+      return;
+    }
+
+    const currentItem = cartItems.find(
+      (item) => item.productDetails._id === productId
+    );
+
+    if (!currentItem) return;
+
+    const newQuantity =
+      type === "increase"
+        ? currentItem.quantity + 1
+        : Math.max(1, currentItem.quantity - 1);
+
+    try {
+      const response = await networkInstance.put(
+        `/cart/update-quantity/${cartId}`,
+        {
+          productId,
+          quantity: newQuantity,
+        }
+      );
+
+      if (response.status === 200) {
+        setCartItems((prevCart) =>
+          prevCart.map((item) =>
+            item.productDetails._id === productId
+              ? { ...item, quantity: newQuantity }
+              : item
+          )
+        );
+        setToast({ message: "Quantity updated!", type: "success" });
+      }
+    } catch (err) {
+      console.error("Error updating quantity:", err?.response?.data || err);
+    }
+  };
+
+  const deleteItem = async (productId) => {
+    try {
+      const cartId = localStorage.getItem("cartId");
+      if (!cartId) {
+        console.log("No cart ID found.");
+        return;
+      }
+
+      await networkInstance.delete(`/cart/remove/${cartId}`, {
+        headers: {
+          cartid: cartId,
+        },
+        data: {
+          productId,
+        },
+      });
+
+      await getCart();
+      setToast({ message: "Product deleted from cart!", type: "warning" });
+    } catch (error) {
+      console.error("Error deleting item:", error?.response?.data || error);
+    }
+  };
+
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.productDetails.price * item.quantity,
+
+    0
+  );
   return (
     <>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <PageBanner pageTitle={"Your order."} breadTitle={"Cart"} type={1} />
 
       {/* cart */}
@@ -34,8 +132,13 @@ const Cart = () => {
               </div>
             </div>
 
-            {CartData.items.map((item, key) => (
-            <CartItem item={item} key={key} />
+            {cartItems.map((item, key) => (
+              <CartItem
+                item={item}
+                key={key}
+                updateQuantity={updateQuantity}
+                deleteItem={deleteItem}
+              />
             ))}
 
             <div className="row justify-content-end">
@@ -47,17 +150,19 @@ const Cart = () => {
                         <div className="sb-total-title">Subtotal:</div>
                       </div>
                       <div className="col-4">
-                        <div className="sb-price-1 text-right">$32.99</div>
+                        <div className="sb-price-1 text-right">₦{subtotal}</div>
                       </div>
                     </div>
                   </div>
                   <div className="sb-sum">
                     <div className="row">
                       <div className="col-8">
-                        <div className="sb-total-title">Estimated shipping:</div>
+                        <div className="sb-total-title">
+                          Estimated shipping:
+                        </div>
                       </div>
                       <div className="col-4">
-                        <div className="sb-price-1 text-right">$5</div>
+                        <div className="sb-price-1 text-right">₦0</div>
                       </div>
                     </div>
                   </div>
@@ -67,7 +172,7 @@ const Cart = () => {
                         <div className="sb-total-title">Total:</div>
                       </div>
                       <div className="col-4">
-                        <div className="sb-price-2 text-right">$37.99</div>
+                        <div className="sb-price-2 text-right">₦{subtotal}</div>
                       </div>
                     </div>
                   </div>

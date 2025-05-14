@@ -43,7 +43,7 @@ const DefaultHeader = ({ setLoading }) => {
   return (
     <>
       {/* top bar */}
-      <div className="sb-top-bar-frame">
+      <div className="sb-top-bar-frame ">
         <div className="sb-top-bar-bg"></div>
         <div className="container">
           <div className="sb-top-bar">
