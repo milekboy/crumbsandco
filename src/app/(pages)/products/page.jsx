@@ -1,23 +1,46 @@
-import React from "react";
+"use client";
 
-import AppData from "@data/app.json";
+import { useEffect, useState } from "react";
+
+// import AppData from "@data/app.json";
 import ProductsData from "@data/products.json";
-
+import NetworkInstance from "../../api/NetworkInstance";
 import PageBanner from "@components/PageBanner";
 import ProductsGrid from "@components/products/ProductsGrid";
 import PromoSection from "@components/sections/Promo";
 
-export const metadata = {
-  title: {
-		default: "Products",
-	},
-  description: AppData.settings.siteDescription,
-}
+// export const metadata = {
+//   title: {
+//     default: "Products",
+//   },
+//   description: AppData.settings.siteDescription,
+// };
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const networkInstance = NetworkInstance();
+
+  useEffect(() => {
+    getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getProducts = async () => {
+    try {
+      const res = await networkInstance.get("product/get-all-products");
+      setProducts(res.data);
+      console.log(products);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
   return (
     <>
-      <PageBanner pageTitle={"Main dishes"} breadTitle={"Main dishes"} type={1} />
+      <PageBanner
+        pageTitle={"Main dishes"}
+        breadTitle={"Main dishes"}
+        type={1}
+      />
 
       {/* shop list */}
       <section className="sb-menu-section sb-p-90-60">
@@ -25,15 +48,25 @@ const Products = () => {
           <div />
         </div>
         <div className="container">
-          <ProductsGrid items={ProductsData.items} />
+          <ProductsGrid items={products} />
 
           <div>
             <ul className="sb-pagination">
-              <li className="sb-active"><a href="#.">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">...</a></li>
+              <li className="sb-active">
+                <a href="#.">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">...</a>
+              </li>
             </ul>
           </div>
         </div>

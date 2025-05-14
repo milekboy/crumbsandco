@@ -1,6 +1,7 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-
+import LoadingOverlay from "../_components/LoadingOverlay";
 import AppData from "@data/app.json";
 import Products from "@data/products";
 
@@ -14,23 +15,26 @@ const ProductsSlider = dynamic(() => import("@components/sliders/Products"), {
   ssr: false,
 });
 
-export const metadata = {
-  title: {
-    default: "Home",
-    template: "%s | " + AppData.settings.siteName,
-  },
-  description: AppData.settings.siteDescription,
-};
+// export const metadata = {
+//   title: {
+//     default: "Home",
+//     template: "%s | " + AppData.settings.siteName,
+//   },
+//   description: AppData.settings.siteDescription,
+// };
 
-async function Home1() {
+function Home1() {
+  const [loading, setLoading] = useState(false);
   return (
     <>
+      {loading && <LoadingOverlay />}
       <HeroSection type={1} />
       <AboutSection />
       <CategoriesSection />
       <ProductsSlider
         items={Products.collection["popular"]}
         slidesPerView={4}
+        setLoading={setLoading}
       />
       <TeamSection />
       {/* <CallToActionSection /> */}

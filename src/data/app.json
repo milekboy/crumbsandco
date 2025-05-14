@@ -74,32 +74,13 @@
         "link": "/shop",
         "children": [
           {
-            "label": "Shop",
-            "link": "/shop"
-          },
-          {
-            "label": "Shop 2",
-            "link": "/shop-2"
-          },
-          {
             "label": "Products",
             "link": "/products"
           },
-          {
-            "label": "Products 2",
-            "link": "/products-2"
-          },
-          {
-            "label": "Product page",
-            "link": "/product"
-          },
+
           {
             "label": "Cart",
             "link": "/cart"
-          },
-          {
-            "label": "Checkout",
-            "link": "/checkout"
           }
         ]
       },
