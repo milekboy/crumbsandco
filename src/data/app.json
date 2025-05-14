@@ -45,26 +45,6 @@
           {
             "label": "Menu 1",
             "link": "/menu"
-          },
-          {
-            "label": "Menu 2",
-            "link": "/menu-2"
-          },
-          {
-            "label": "Menu 3",
-            "link": "/menu-3"
-          },
-          {
-            "label": "Menu 4",
-            "link": "/menu-4"
-          },
-          {
-            "label": "Menu 5",
-            "link": "/menu-5"
-          },
-          {
-            "label": "Menu 6",
-            "link": "/menu-6"
           }
         ]
       },
