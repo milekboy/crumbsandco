@@ -1,24 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NetworkInstance from "../../api/NetworkInstance";
 import Toast from "../Toast";
 
 const ProductButtons = ({ productId, categoryId }) => {
   const networkInstance = NetworkInstance();
+
+  const [quantity, setQuantity] = useState(1);
   const [cartTotal, setCartTotal] = useState(0);
   const [toast, setToast] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+
   const minQuantity = 1;
   const maxQuantity = 10;
 
   const addToCart = async (e) => {
     e.preventDefault();
 
+    if (!productId || !categoryId) {
+      setToast({ message: "Missing product or category ID.", type: "error" });
+      return;
+    }
+
     const payload = {
       productId,
       categoryId,
-      quantity: 1,
+      quantity,
     };
 
     const existingCartId = localStorage.getItem("cartId");
@@ -27,7 +34,11 @@ const ProductButtons = ({ productId, categoryId }) => {
     }
 
     try {
-      const response = await networkInstance.post(`/cart/add`, payload);
+      const response = await networkInstance.post("/cart/add", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response?.status === 200 || response?.status === 201) {
         const newCartId = response.data?.cartId;
@@ -35,16 +46,22 @@ const ProductButtons = ({ productId, categoryId }) => {
           localStorage.setItem("cartId", newCartId);
         }
 
-        const newTotal = cartTotal + quantity;
-        setCartTotal(newTotal);
+        setCartTotal((prev) => prev + 1);
+        setToast({ message: "Product added to cart!", type: "success" });
 
-        setToast({
-          message: "Product added to cart!",
-          type: "success",
-        });
+        // Optional: update bubble count in DOM
+        const cartNumberEl = document.querySelector(".sb-cart-number");
+        if (cartNumberEl) {
+          cartNumberEl.innerHTML = Number(cartNumberEl.innerHTML || 0) + 1;
+          cartNumberEl.classList.add("sb-added");
+          setTimeout(() => {
+            cartNumberEl.classList.remove("sb-added");
+          }, 600);
+        }
       }
     } catch (err) {
       console.error("Not added to cart:", err?.response?.data || err, payload);
+      setToast({ message: "Failed to add to cart.", type: "error" });
     }
   };
 
@@ -59,12 +76,11 @@ const ProductButtons = ({ productId, categoryId }) => {
       )}
 
       <div className="sb-buttons-frame">
+        {/* Quantity Controls */}
         <div className="sb-input-number-frame">
           <div
             className="sb-input-number-btn sb-sub"
-            onClick={() =>
-              setQuantity(quantity > minQuantity ? quantity - 1 : quantity)
-            }
+            onClick={() => setQuantity((q) => (q > minQuantity ? q - 1 : q))}
           >
             -
           </div>
@@ -77,9 +93,7 @@ const ProductButtons = ({ productId, categoryId }) => {
           />
           <div
             className="sb-input-number-btn sb-add"
-            onClick={() =>
-              setQuantity(quantity < maxQuantity ? quantity + 1 : quantity)
-            }
+            onClick={() => setQuantity((q) => (q < maxQuantity ? q + 1 : q))}
           >
             +
           </div>
