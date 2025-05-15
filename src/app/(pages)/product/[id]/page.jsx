@@ -91,6 +91,15 @@ const Products = () => {
 
   const addToCart = async (e) => {
     e.preventDefault();
+    const cartNumberEl = document.querySelector(".sb-cart-number");
+    setCartTotal(cartTotal + quantity);
+
+    cartNumberEl.classList.add("sb-added");
+    e.currentTarget.classList.add("sb-added");
+
+    setTimeout(() => {
+      cartNumberEl.classList.remove("sb-added");
+    }, 600);
 
     if (!product._id || !product.category) {
       setToast({ message: "Missing product or category ID.", type: "error" });
@@ -123,16 +132,6 @@ const Products = () => {
 
         setCartTotal((prev) => prev + 1);
         setToast({ message: "Product added to cart!", type: "success" });
-
-        // Optional: update bubble count in DOM
-        const cartNumberEl = document.querySelector(".sb-cart-number");
-        if (cartNumberEl) {
-          cartNumberEl.innerHTML = Number(cartNumberEl.innerHTML || 0) + 1;
-          cartNumberEl.classList.add("sb-added");
-          setTimeout(() => {
-            cartNumberEl.classList.remove("sb-added");
-          }, 600);
-        }
       }
     } catch (err) {
       console.error("Not added to cart:", err?.response?.data || err, payload);

@@ -1,13 +1,16 @@
 "use client";
 import LoadingOverlay from "../LoadingOverlay";
 import Link from "next/link";
+import Toast from "../Toast";
 import { useState, useEffect } from "react";
-
+import NetworkInstance from "../../api/NetworkInstance";
 import CartData from "@data/cart.json";
 
 const ProductItem = ({ item, index, marginBottom, moreType }) => {
   const [cartTotal, setCartTotal] = useState(CartData.total);
   const [quantity, setQuantity] = useState(1);
+  const [toast, setToast] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const stars = ["", "", "", "", ""];
   useEffect(() => {
@@ -15,7 +18,20 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
     cartNumberEl.innerHTML = cartTotal;
   }, [cartTotal]);
 
-  const addToCart = (e) => {
+  // const addToCart = (e) => {
+  //   e.preventDefault();
+  //   const cartNumberEl = document.querySelector(".sb-cart-number");
+  //   setCartTotal(cartTotal + quantity);
+
+  //   cartNumberEl.classList.add("sb-added");
+  //   e.currentTarget.classList.add("sb-added");
+
+  //   setTimeout(() => {
+  //     cartNumberEl.classList.remove("sb-added");
+  //   }, 600);
+  // };
+
+  const addToCart = async (e) => {
     e.preventDefault();
     const cartNumberEl = document.querySelector(".sb-cart-number");
     setCartTotal(cartTotal + quantity);
@@ -26,11 +42,57 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
     setTimeout(() => {
       cartNumberEl.classList.remove("sb-added");
     }, 600);
+
+    if (!item._id || !item.category) {
+      setToast({ message: "Missing product or category ID.", type: "error" });
+      return;
+    }
+
+    const payload = {
+      productId: item._id,
+      categoryId: item.category,
+      quantity: 1,
+    };
+
+    const existingCartId = localStorage.getItem("cartId");
+    if (existingCartId) {
+      payload.cartId = existingCartId;
+    }
+
+    try {
+      const response = await NetworkInstance().post("/cart/add", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response?.status === 200 || response?.status === 201) {
+        const newCartId = response.data?.cartId;
+        if (newCartId) {
+          localStorage.setItem("cartId", newCartId);
+        }
+
+        setCartTotal((prev) => prev + 1);
+        setToast({ message: "Product added to cart!", type: "success" });
+
+        // Optional: update bubble count in DOM
+      }
+    } catch (err) {
+      console.error("Not added to cart:", err?.response?.data || err, payload);
+      setToast({ message: "Failed to add to cart.", type: "error" });
+    }
   };
 
   return (
     <>
       {loading && <LoadingOverlay />}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
       <div className={`sb-menu-item sb-mb-${marginBottom}`}>
         <Link
           onClick={() => setLoading(true)}

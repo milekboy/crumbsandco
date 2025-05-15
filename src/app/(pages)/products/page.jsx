@@ -1,20 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-// import AppData from "@data/app.json";
-import ProductsData from "@data/products.json";
 import NetworkInstance from "../../api/NetworkInstance";
 import PageBanner from "@components/PageBanner";
 import ProductsGrid from "@components/products/ProductsGrid";
 import PromoSection from "@components/sections/Promo";
-
-// export const metadata = {
-//   title: {
-//     default: "Products",
-//   },
-//   description: AppData.settings.siteDescription,
-// };
 
 const Products = () => {
   const [products, setProducts] = useState([]);
