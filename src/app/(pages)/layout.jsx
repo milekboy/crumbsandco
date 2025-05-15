@@ -7,19 +7,21 @@ import { usePathname } from "next/navigation";
 
 const PagesLayouts = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const asPath = usePathname();
+  const pathname = usePathname();
 
   useEffect(() => {
     setLoading(false);
-  }, [asPath]);
+  }, [pathname]);
+
+  const isAdminPage = pathname.startsWith("/admin");
 
   return (
     <>
       {loading && <LoadingOverlay />}
-      <Header layout={"default"} setLoading={setLoading} />
+      {!isAdminPage && <Header layout="default" setLoading={setLoading} />}
       <div id="sb-dynamic-content" className="sb-transition-fade">
         {children}
-        <Footer layout={"default"} />
+        {!isAdminPage && <Footer layout="default" />}
       </div>
     </>
   );

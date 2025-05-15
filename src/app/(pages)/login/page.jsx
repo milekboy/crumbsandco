@@ -41,7 +41,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         setTimeout(() => {
           setToast(null);
-          router.push("/");
+          router.push("/admin-home");
         }, 1500);
       }
     } catch (error) {
