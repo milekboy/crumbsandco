@@ -73,6 +73,20 @@
             "link": "/contact"
           }
         ]
+      },
+      {
+        "label": "Login",
+        "link": "/login",
+        "children": [
+          {
+            "label": "Login",
+            "link": "/login"
+          },
+          {
+            "label": "Register",
+            "link": "/register"
+          }
+        ]
       }
     ]
   },

@@ -2,7 +2,7 @@ import Data from "@data/sections/hero-1.json";
 
 const LoadingOverlay = () => (
   <>
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-20">
       <div className="absolute flex justify-center items-center h-screen inset-0 bg-[#A4A1AA33] backdrop-blur-xs">
         <img
           className="w-10"
