@@ -15,7 +15,7 @@ export default function AdminHeader() {
     <div>
       {loading && <LoadingOverlay />}
       <div className="flex flex-col">
-        <div className="px-8 pt-4 border-b flex justify-between">
+        <div className="px-8 pt-3 border-b flex justify-between">
           <div>
             <p className="text-xl text-[#f1c126] font-semibold">
               Welcome Back!

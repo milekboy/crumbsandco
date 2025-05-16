@@ -13,7 +13,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="w-64 h-auto  text-gray-800 px-5 py-4 border-r-2 border-gray-100">
+    <div className="w-64   text-gray-800 px-5 py-4 border-r-2 border-gray-100">
       {loading && <LoadingOverlay />}
       <Link href="/" className="sb-logo-frame">
         {/* logo img */}

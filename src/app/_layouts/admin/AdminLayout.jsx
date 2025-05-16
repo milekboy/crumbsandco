@@ -2,7 +2,7 @@ import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 export default function AdminLayout({ children }) {
   return (
-    <div className="flex h-full">
+    <div className="flex ">
       <Sidebar />
       <div className="flex-1 px-4 ">
         <AdminHeader />

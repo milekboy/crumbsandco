@@ -31,11 +31,11 @@ export default function ProductTable({ products, setLoading }) {
 
   const handleNavigate = (product) => {
     setLoading(true);
-    router.push(`/edit-product/${product._id}`);
+    router.push(`/admin-edit-product/${product._id}`);
   };
 
   return (
-    <div className="px-8 mt-2 py-4 overflow-x-auto">
+    <div className="px-8 mt-2 py-4 overflow-x-auto ">
       {toast && (
         <Toast
           message={toast.message}
@@ -43,7 +43,7 @@ export default function ProductTable({ products, setLoading }) {
           onClose={() => setToast(null)}
         />
       )}
-      <p className="text-[#394849] font-bold ms-5">List of Products</p>
+      <p className="text-[#394849] font-bold ms-5 ">List of Products</p>
       <table className="min-w-full bg-white border-y border-[#EFF4FA] mt-4">
         <thead className="bg-[#FAFAFB] text-[#8F9BB3]">
           <tr>
