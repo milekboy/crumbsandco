@@ -83,6 +83,10 @@
             "link": "/login"
           },
           {
+            "label": "Admin Login",
+            "link": "/manager-login"
+          },
+          {
             "label": "Register",
             "link": "/register"
           }

@@ -7,7 +7,7 @@ import LoadingOverlay from "../../_components/LoadingOverlay";
 import Toast from "../../_components/Toast";
 import { useRouter } from "next/navigation";
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -41,7 +41,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         setTimeout(() => {
           setToast(null);
-          router.push("/shop");
+          router.push("/admin-home");
         }, 1500);
       }
     } catch (error) {
@@ -77,7 +77,8 @@ const Login = () => {
                   <div className="sb-main-title">
                     {/* <span className="sb-404">Login</span> */}
                     <h1 className="sb-mb-30">
-                      Login To Your <br /> Account
+                      Login To Your <br />
+                      Admin Account
                     </h1>
                     {/* button */}
                     <Link href="/" className="sb-btn sb-btn-2">
@@ -149,4 +150,4 @@ const Login = () => {
     </>
   );
 };
-export default Login;
+export default AdminLogin;

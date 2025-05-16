@@ -1,166 +1,172 @@
 "use client";
-
-import { Formik } from 'formik';
-import AppData from "@data/app.json";
+import NetworkInstance from "../../api/NetworkInstance";
+import { Formik } from "formik";
+import { useState } from "react";
+import Toast from "../Toast";
 
 const ReservationForm = () => {
+  const networkInstance = NetworkInstance();
+  const [toast, setToast] = useState(null);
   return (
     <>
-        {/* contact form */}
-        <Formik
-        initialValues = {{ name: '', email: '', tel: '', date: '', person: 1 }}
-        validate = { values => {
-            const errors = {};
-            if (!values.email) {
-                errors.email = 'Required';
-            } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-                errors.email = 'Invalid email address';
-            }
-            return errors;
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+      <Formik
+        initialValues={{
+          name: "",
+          email: "",
+          phone: "",
+          period: "",
+          person: 1,
         }}
-        onSubmit = {( values, { setSubmitting } ) => {
-            const form = document.getElementById("reservationForm");
-            const status = document.getElementById("reservationFormStatus");
-            const data = new FormData();
-
-            data.append('name', values.name);
-            data.append('email', values.email);
-            data.append('tel', values.tel);
-            data.append('date', values.date);
-            data.append('person', values.person);
-
-            fetch(form.action, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.style.opacity = "1";
-                    status.style.pointerEvents = "auto";
-                    form.reset()
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            status.innerHTML = "<h5>Oops! There was a problem submitting your form</h5>"
-                        }
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "<h5>Oops! There was a problem submitting your form</h5>"
+        validate={(values) => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = "Required";
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
+            errors.email = "Invalid email address";
+          }
+          return errors;
+        }}
+        onSubmit={async (values, { setSubmitting, resetForm }) => {
+          const token = localStorage.getItem("token");
+          try {
+            const response = await networkInstance.post("/reserve", values, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             });
 
-            setSubmitting(false);
+            if (response.status === 200 || response.status === 201) {
+              setToast({
+                message: "Message sent successfully!",
+                type: "success",
+              });
+              resetForm();
+            }
+          } catch (error) {
+            console.error("Submission error:", error?.response?.data || error);
+            setToast({
+              message: "Submission failed. Please try again.",
+              type: "error",
+            });
+          }
+          setSubmitting(false);
         }}
-        >
+      >
         {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
         }) => (
-        <form onSubmit={handleSubmit} id="reservationForm" action={AppData.settings.formspreeURL}>
+          <form onSubmit={handleSubmit} id="reservationForm">
             <div className="row">
-            <div className="col-lg-12">
+              <div className="col-lg-12">
                 <div className="sb-group-input">
-                    <input 
-                        type="text" 
-                        placeholder=" "
-                        name="name" 
-                        required="required" 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.name} 
-                    />
-                    <span className="sb-bar"></span>
-                    <label>Name</label>
+                  <input
+                    type="text"
+                    placeholder=" "
+                    name="name"
+                    required="required"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.name}
+                  />
+                  <span className="sb-bar"></span>
+                  <label>Name</label>
                 </div>
-            </div>
-            <div className="col-lg-12">
+              </div>
+              <div className="col-lg-12">
                 <div className="sb-group-input">
-                    <input 
-                        type="email" 
-                        placeholder=" "
-                        name="email" 
-                        required="required" 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email} 
-                    />
-                    <span className="sb-bar"></span>
-                    <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder=" "
+                    name="email"
+                    required="required"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                  />
+                  <span className="sb-bar"></span>
+                  <label>Email</label>
                 </div>
-            </div>
-            <div className="col-lg-12">
+              </div>
+              <div className="col-lg-12">
                 <div className="sb-group-input">
-                    <input 
-                        type="tel" 
-                        placeholder=" "
-                        name="tel"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.tel} 
-                    />
-                    <span className="sb-bar"></span>
-                    <label>Phone</label>
+                  <input
+                    type="tel"
+                    placeholder=" "
+                    name="phone"
+                    required="required"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.phone}
+                  />
+                  <span className="sb-bar"></span>
+                  <label>Phone</label>
                 </div>
-            </div>
-            <div className="col-lg-12">
+              </div>
+              <div className="col-lg-12">
                 <div className="sb-group-input">
-                    <input 
-                        type="text" 
-                        placeholder=" "
-                        name="date"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.date} 
-                    />
-                    <span className="sb-bar"></span>
-                    <label>Time and Date</label>
+                  <input
+                    type="text"
+                    placeholder=" "
+                    name="period"
+                    required="required"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.period}
+                  />
+                  <span className="sb-bar"></span>
+                  <label>Time and Date</label>
                 </div>
-            </div>
-            <div className="col-lg-12">
+              </div>
+              <div className="col-lg-12">
                 <div className="sb-group-input">
-                    <input 
-                        type="number" 
-                        placeholder=" "
-                        name="person"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.person}
-                        min={1}
-                        max={6} 
-                    />
-                    <span className="sb-bar"></span>
-                    <label>Person</label>
+                  <input
+                    type="number"
+                    placeholder=" "
+                    name="person"
+                    required="required"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.person}
+                    min={1}
+                    max={6}
+                  />
+                  <span className="sb-bar"></span>
+                  <label>Person</label>
                 </div>
-            </div>
+              </div>
             </div>
 
             {/* button */}
-            <button type="submit" className="sb-btn sb-cf-submit sb-show-success">
-                <span className="sb-icon">
-                    <img src="/img/ui/icons/arrow.svg" alt="icon" />
-                </span>
-                <span>Reserve</span>
+            <button
+              type="submit"
+              className="sb-btn sb-cf-submit sb-show-success"
+            >
+              <span className="sb-icon">
+                <img src="/img/ui/icons/arrow.svg" alt="icon" />
+              </span>
+              <span>Reserve</span>
             </button>
             {/* button end */}
-        </form>
+          </form>
         )}
-        </Formik>
-        {/* contact form end */}
+      </Formik>
+      {/* contact form end */}
     </>
   );
 };
