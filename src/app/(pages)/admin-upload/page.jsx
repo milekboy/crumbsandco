@@ -108,7 +108,9 @@ export default function AdminUpload() {
           />
         )}
         <div className="">
-          <h2 className="text-lg font-semibold mb-4">Upload Products</h2>
+          <p className="text-[#394849] font-bold ms-5 text-xl">
+            Upload Products
+          </p>
 
           <div>
             <div className="flex items-center gap-6">

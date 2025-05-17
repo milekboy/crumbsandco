@@ -83,7 +83,6 @@ const Products = () => {
   );
 
   const tabs = [
-    { slug: "ingredients", name: "Ingredients" },
     { slug: "details", name: "Product details" },
     { slug: "reviews", name: "Reviews" },
   ];
@@ -280,14 +279,13 @@ const Products = () => {
             </div>
           </div>
 
-          <ProductTabs items={tabs} active="ingredients" />
+          <ProductTabs items={tabs} active="details" />
 
           <div className="sb-masonry-grid sb-tabs">
             <div className="sb-grid-sizer" />
             {tabs.map((tab) => (
               <div key={tab.slug} className={`sb-grid-item sb-${tab.slug}-tab`}>
                 <div className="sb-tab">
-                  {tab.slug === "ingredients" && <ProductAtts />}
                   {tab.slug === "details" && <ProductDescription />}
                   {tab.slug === "reviews" && <ProductReviews />}
                 </div>
@@ -306,7 +304,7 @@ const Products = () => {
         itemType="product"
       />
 
-      <CallToActionTwoSection />
+      {/* <CallToActionTwoSection /> */}
     </>
   );
 };

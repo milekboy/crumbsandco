@@ -42,7 +42,7 @@ export default function AdminOrders() {
   return (
     <AdminLayout>
       <div className="px-8 mt-5 py-4 overflow-x-auto ">
-        <p className="text-[#394849] font-bold ms-5">View Orders</p>
+        <p className="text-[#394849] font-bold ms-5 text-xl">View Orders</p>
         <table className="min-w-full bg-white border-y border-[#EFF4FA] mt-4">
           <thead className="border-b border-[#EFF4FA] bg-[#FAFAFB] text-[#8F9BB3]">
             <tr>

@@ -39,7 +39,9 @@ export default function CategoryTable({ products, setLoading }) {
           onClose={() => setToast(null)}
         />
       )}
-      <p className="text-[#394849] font-bold ms-5 ">List of Products</p>
+      <p className="text-[#394849] font-bold ms-5 text-xl">
+        List of Categories
+      </p>
       <table className="min-w-full bg-white border-y border-[#EFF4FA] mt-4">
         <thead className="bg-[#FAFAFB] text-[#8F9BB3]">
           <tr>

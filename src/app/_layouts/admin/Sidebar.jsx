@@ -13,69 +13,98 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="w-64   text-gray-800 px-5 py-4 border-r-2 border-gray-100">
+    <div className="w-64   text-gray-800 px-5 py-4 border-r-2 border-gray-100 ">
       {loading && <LoadingOverlay />}
       <Link href="/" className="sb-logo-frame">
         {/* logo img */}
         <img src={AppData.header.logo.image} alt={AppData.header.logo.alt} />
       </Link>
-      <div className="  space-y-5 mt-5">
-        <Link href={"/admin-orders"}>
+      <div className="space-y-5 mt-5">
+        <Link href="/admin-orders" className="block">
           <button
             onClick={navHandler}
             className={
               pathname.startsWith("/admin-orders")
-                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
-                : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
             Orders
           </button>
         </Link>
-        <Link href={"/admin-home"}>
+
+        <Link href="/admin-view-reservations" className="block">
           <button
             onClick={navHandler}
             className={
-              pathname == "/admin-home"
+              pathname === "/admin-view-reservations"
                 ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
-                : `py-2 w-40   text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+            }
+          >
+            Reservations
+          </button>
+        </Link>
+
+        <Link href="/admin-contact-view" className="block">
+          <button
+            onClick={navHandler}
+            className={
+              pathname === "/admin-contact-view"
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+            }
+          >
+            Messages
+          </button>
+        </Link>
+
+        <Link href="/admin-home" className="block">
+          <button
+            onClick={navHandler}
+            className={
+              pathname === "/admin-home"
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
             Product List
           </button>
         </Link>
-        <Link href={"/admin-category-list"}>
+
+        <Link href="/admin-category-list" className="block">
           <button
             onClick={navHandler}
             className={
               pathname.startsWith("/admin-category-list")
-                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
-                : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
             Category List
           </button>
         </Link>
-        <Link href={"/admin-upload"}>
+
+        <Link href="/admin-upload" className="block">
           <button
             onClick={navHandler}
             className={
-              pathname == "/admin-upload"
-                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
-                : ` mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+              pathname === "/admin-upload"
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
             Upload Products
           </button>
         </Link>
 
-        <Link href={"/admin-upload-category"}>
+        <Link href="/admin-upload-category" className="block">
           <button
             onClick={navHandler}
             className={
               pathname.startsWith("/admin-upload-category")
-                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
-                : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+                ? `py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
             Upload Category
