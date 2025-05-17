@@ -1,9 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Toast from "../../_components/Toast";
 import NetworkInstance from "../../api/NetworkInstance";
-import AppData from "@data/app.json";
-import CartData from "@data/cart.json";
+import { CartContext } from "../../_components/CartContext";
 
 import PageBanner from "@components/PageBanner";
 import CartItem from "@components/products/CartItem";
@@ -13,7 +12,7 @@ import Link from "next/link";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [toast, setToast] = useState(null);
-
+  const { fetchCartCount } = useContext(CartContext);
   const networkInstance = NetworkInstance();
 
   async function getCart() {
@@ -96,6 +95,7 @@ const Cart = () => {
       });
 
       await getCart();
+      fetchCartCount();
       setToast({ message: "Product deleted from cart!", type: "warning" });
     } catch (error) {
       console.error("Error deleting item:", error?.response?.data || error);

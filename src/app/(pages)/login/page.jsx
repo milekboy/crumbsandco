@@ -41,7 +41,11 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         setTimeout(() => {
           setToast(null);
-          router.push("/shop");
+          if (response.data.user.isAdmin === true) {
+            router.push("/admin-home");
+          } else {
+            router.push("/shop");
+          }
         }, 1500);
       }
     } catch (error) {

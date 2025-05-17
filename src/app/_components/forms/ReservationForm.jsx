@@ -46,7 +46,7 @@ const ReservationForm = () => {
 
             if (response.status === 200 || response.status === 201) {
               setToast({
-                message: "Message sent successfully!",
+                message: "Reservation Succesful!",
                 type: "success",
               });
               resetForm();

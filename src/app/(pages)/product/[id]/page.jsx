@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
+import { CartContext } from "@/src/app/_components/CartContext";
 import Toast from "@/src/app/_components/Toast";
 import NetworkInstance from "../../../api/NetworkInstance";
 import PageBanner from "@components/PageBanner";
@@ -20,6 +21,7 @@ const ProductTabs = dynamic(() => import("@components/products/ProductTabs"), {
 
 const Products = () => {
   const params = useParams();
+  const { fetchCartCount } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
   const [cartTotal, setCartTotal] = useState(0);
   const [toast, setToast] = useState(null);
@@ -125,6 +127,7 @@ const Products = () => {
       });
 
       if (response?.status === 200 || response?.status === 201) {
+        fetchCartCount();
         const newCartId = response.data?.cartId;
         if (newCartId) {
           localStorage.setItem("cartId", newCartId);

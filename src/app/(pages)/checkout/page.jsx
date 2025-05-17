@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
-
+import { CartContext } from "../../_components/CartContext";
 import LoadingOverlay from "../../_components/LoadingOverlay";
 import NetworkInstance from "../../api/NetworkInstance";
 
@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Checkout = () => {
   const router = useRouter();
-
+  const { setCartCount } = useContext(CartContext);
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
   // const [shippingDetails, setShippingDetails] = useState(false);
@@ -79,6 +79,7 @@ const Checkout = () => {
           });
 
           if (data.status === "successful") {
+            setCartCount(0);
             console.log("Payment successful! Your order is confirmed.");
 
             localStorage.removeItem("cartId");

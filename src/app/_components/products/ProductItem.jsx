@@ -1,16 +1,19 @@
 "use client";
 import LoadingOverlay from "../LoadingOverlay";
 import Link from "next/link";
+import { CartContext } from "../CartContext";
 import Toast from "../Toast";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import NetworkInstance from "../../api/NetworkInstance";
 import CartData from "@data/cart.json";
 
 const ProductItem = ({ item, index, marginBottom, moreType }) => {
-  const [cartTotal, setCartTotal] = useState(CartData.total);
+  const { cartCount } = useContext(CartContext);
+  const [cartTotal, setCartTotal] = useState(cartCount);
   const [quantity, setQuantity] = useState(1);
-  const [toast, setToast] = useState(null);
 
+  const [toast, setToast] = useState(null);
+  const { fetchCartCount } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const stars = ["", "", "", "", ""];
   useEffect(() => {
@@ -18,24 +21,9 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
     cartNumberEl.innerHTML = cartTotal;
   }, [cartTotal]);
 
-  // const addToCart = (e) => {
-  //   e.preventDefault();
-  //   const cartNumberEl = document.querySelector(".sb-cart-number");
-  //   setCartTotal(cartTotal + quantity);
-
-  //   cartNumberEl.classList.add("sb-added");
-  //   e.currentTarget.classList.add("sb-added");
-
-  //   setTimeout(() => {
-  //     cartNumberEl.classList.remove("sb-added");
-  //   }, 600);
-  // };
-
   const addToCart = async (e) => {
     e.preventDefault();
     const cartNumberEl = document.querySelector(".sb-cart-number");
-    setCartTotal(cartTotal + quantity);
-
     cartNumberEl.classList.add("sb-added");
     e.currentTarget.classList.add("sb-added");
 
@@ -67,12 +55,11 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
       });
 
       if (response?.status === 200 || response?.status === 201) {
+        fetchCartCount();
         const newCartId = response.data?.cartId;
         if (newCartId) {
           localStorage.setItem("cartId", newCartId);
         }
-
-        setCartTotal((prev) => prev + 1);
         setToast({ message: "Product added to cart!", type: "success" });
 
         // Optional: update bubble count in DOM

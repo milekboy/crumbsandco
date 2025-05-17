@@ -45,8 +45,8 @@ export default function OrderReview() {
       <div className="flex flex-col items-center mt-10 pb-10">
         <div className="w-[966px] bg-white  rounded-xl  space-y-4">
           <div className="grid grid-cols-3 shadow-lg border p-6 border-gray-200 justify-between gap-y-5 text-sm text-gray-700">
-            <div className="space-y-2">
-              <p className="font-semibold">Food</p>
+            {/* <div className="space-y-2"> */}
+            {/* <p className="font-semibold">Food</p>
               <p>{item.productName}</p>
             </div>
             <div className="space-y-2">
@@ -56,24 +56,58 @@ export default function OrderReview() {
             <div className="space-y-2">
               <p className="font-semibold">Amount</p>
               <p> ₦{Number(order.totalAmount).toLocaleString()}</p>
-            </div>
+            </div> */}
             <div className="space-y-2">
               <p className="font-semibold">Owner</p>
               <p>{shipping.fullName}</p>
             </div>
-
+            <div className="space-y-2">
+              <p className="font-semibold">Phone Number</p>
+              <p>{shipping.phoneNumber}</p>
+            </div>
+            <div className="space-y-2">
+              <p className="font-semibold">Email Address</p>
+              <p>{shipping.email}</p>
+            </div>
+            <div className="space-y-2">
+              <p className="font-semibold">Address</p>
+              <p className="text-sm text-gray-600">
+                {shipping.street}, {shipping.city}, {shipping.state},{" "}
+                {shipping.country}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <p className="font-semibold">Total</p>
+              <p className=" font-semibold">
+                {" "}
+                ₦{Number(order.totalAmount || 0).toLocaleString()}
+              </p>
+            </div>
             <div className="space-y-2">
               <p className="font-semibold">Status</p>
               <p className=" ">{order.status}</p>
             </div>
           </div>
-
-          <div className="bg-white border-gray-200 border rounded-lg p-4 mt-6">
-            <p className="font-semibold">Address</p>
-            <p className="text-sm text-gray-600">
-              {/* {shipping.houseNumber}, {shipping.street}, {shipping.city},{" "}
-              {shipping.state}, {shipping.country} */}
-            </p>
+          <div className="bg-white border-gray-200 border rounded-lg p-4 mt-6 w-full">
+            <p className="font-semibold mb-4">Orders</p>
+            <div className="space-y-4">
+              {order.items.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between border-b pb-3 text-sm text-gray-700"
+                >
+                  <div>
+                    <p className="font-medium">{item.productName}</p>
+                    <p className="text-gray-500">Qty: {item.quantity}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-semibold">
+                      ₦{Number(item.unitPrice || 0).toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

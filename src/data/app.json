@@ -51,7 +51,7 @@
 
       {
         "label": "Shop",
-        "link": "/shop",
+        "link": "/products",
         "children": [
           {
             "label": "Products",
@@ -81,10 +81,6 @@
           {
             "label": "Login",
             "link": "/login"
-          },
-          {
-            "label": "Admin Login",
-            "link": "/manager-login"
           },
           {
             "label": "Register",

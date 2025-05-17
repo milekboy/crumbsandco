@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import AppData from "@data/app.json";
-import CartData from "@data/cart.json";
-
+import { CartContext } from "../../_components/CartContext";
+import { useContext } from "react";
 import MiniCart from "@layouts/cart/MiniCart";
 import MiniSidebar from "@layouts/sidebar/MiniSidebar";
 
@@ -16,6 +16,7 @@ const DefaultHeader = ({ setLoading }) => {
   const [miniCart, setMiniCart] = useState(false);
   const [miniSidebar, setMiniSidebar] = useState(false);
   const asPath = usePathname();
+  const { cartCount } = useContext(CartContext);
 
   const isPathActive = (path) => {
     return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
@@ -116,7 +117,7 @@ const DefaultHeader = ({ setLoading }) => {
                   <span className="sb-icon">
                     <img src="/img/ui/icons/cart.svg" alt="icon" />
                   </span>
-                  <i className="sb-cart-number">{CartData.total}</i>
+                  <i className="sb-cart-number">{cartCount}</i>
                 </div>
                 {/* button end */}
                 {/* menu btn */}

@@ -14,6 +14,7 @@ const monoton = Monoton({
   variable: "--font-monoton",
   display: "swap",
 });
+import { CartProvider } from "./_components/CartContext";
 
 import "@styles/css/plugins/bootstrap.min.css";
 import "@styles/css/plugins/swiper.min.css";
@@ -44,7 +45,7 @@ const Layouts = ({ children }) => {
       <body>
         {/* app wrapper */}
         <div className="sb-app">
-          {children}
+          <CartProvider>{children}</CartProvider>
 
           <ScrollbarProgress />
         </div>
