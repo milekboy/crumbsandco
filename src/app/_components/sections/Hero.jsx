@@ -45,7 +45,7 @@ const Hero = ({ type }) => {
                   </Link>
                   {/* button end */}
                   {/* button */}
-                  <Link
+                  {/* <Link
                     href={Data.button2.link}
                     className="sb-btn sb-btn-2 sb-btn-gray"
                   >
@@ -53,7 +53,7 @@ const Hero = ({ type }) => {
                       <img src={Data.button2.icon} alt="icon" />
                     </span>
                     <span className="text-black">{Data.button2.label}</span>
-                  </Link>
+                  </Link> */}
                   {/* button end */}
                 </div>
               </div>

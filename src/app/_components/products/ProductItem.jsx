@@ -95,7 +95,7 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
           <h4 className="sb-card-title">
             <Link href={`/product`}>{item.name}</Link>
           </h4>
-          <div className="sb-price">
+          <div className="sb-price px-2">
             <sub>₦</sub> {item.price}
           </div>
         </div>
