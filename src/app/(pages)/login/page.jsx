@@ -42,7 +42,7 @@ const Login = () => {
         setTimeout(() => {
           setToast(null);
           if (response.data.user.isAdmin === true) {
-            router.push("/admin-home");
+            router.push("/admin-orders");
           } else {
             router.push("/shop");
           }

@@ -24,7 +24,7 @@ export default function Sidebar() {
           <button
             onClick={navHandler}
             className={
-              pathname.startsWith("/edit-product")
+              pathname.startsWith("/admin-orders")
                 ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
                 : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
