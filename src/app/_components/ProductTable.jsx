@@ -9,8 +9,12 @@ export default function ProductTable({ products, setLoading }) {
   const router = useRouter();
   const [toast, setToast] = useState(null);
   const categoryMapping = {
-    "68233cfb38b1873688aa3f4d": "Turkey",
-    "6823585aef8a13a10a95fdbb": "Chicken",
+    "6828e8c45c1b706c04115592": "Starters",
+    "6828e8e05c1b706c04115597": "Drinks",
+    "6828e8f65c1b706c0411559c": "Desserts",
+    "6828ecfc5c1b706c04115655": "Proteins",
+    "6828ed0f5c1b706c0411565a": "Pastries",
+    "6828ed435c1b706c041156b2": "Main Dishes",
   };
 
   const deleteProduct = async (productId) => {
