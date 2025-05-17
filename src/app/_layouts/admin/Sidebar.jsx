@@ -20,6 +20,18 @@ export default function Sidebar() {
         <img src={AppData.header.logo.image} alt={AppData.header.logo.alt} />
       </Link>
       <div className="  space-y-5 mt-5">
+        <Link href={"/admin-orders"}>
+          <button
+            onClick={navHandler}
+            className={
+              pathname.startsWith("/edit-product")
+                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+            }
+          >
+            Orders
+          </button>
+        </Link>
         <Link href={"/admin-home"}>
           <button
             onClick={navHandler}
@@ -29,7 +41,19 @@ export default function Sidebar() {
                 : `py-2 w-40   text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
-            Products
+            Product List
+          </button>
+        </Link>
+        <Link href={"/admin-category-list"}>
+          <button
+            onClick={navHandler}
+            className={
+              pathname.startsWith("/admin-category-list")
+                ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
+                : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
+            }
+          >
+            Category List
           </button>
         </Link>
         <Link href={"/admin-upload"}>
@@ -44,16 +68,17 @@ export default function Sidebar() {
             Upload Products
           </button>
         </Link>
-        <Link href={"/admin-orders"}>
+
+        <Link href={"/admin-upload-category"}>
           <button
             onClick={navHandler}
             className={
-              pathname.startsWith("/edit-product")
+              pathname.startsWith("/admin-upload-category")
                 ? `mt-2 py-2 w-40 text-center cursor-pointer text-white px-3 rounded bg-[#f1c126]`
                 : `mt-2 py-2 w-40 text-center cursor-pointer text-[#f1c126] px-3 rounded hover:bg-[#f1c126] hover:text-white`
             }
           >
-            Orders
+            Upload Category
           </button>
         </Link>
       </div>

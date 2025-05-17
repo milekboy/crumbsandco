@@ -35,8 +35,8 @@ const Register = () => {
 
     const payload = {
       ...formData,
-      isAdmin: true,
-      isClient: false,
+      isAdmin: false,
+      isClient: true,
     };
 
     try {

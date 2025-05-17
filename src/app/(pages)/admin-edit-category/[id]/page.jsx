@@ -18,19 +18,18 @@ export default function EditProductPage() {
   const [productDescription, setProductDescription] = useState("");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
+  const [color, setColor] = useState("");
 
   const networkInstance = NetworkInstance();
 
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const res = await networkInstance.get(`/product/get-product/${id}`);
+        const res = await networkInstance.get(`/category/get-category/${id}`);
         const data = res.data;
         setProduct(data);
 
         setProductName(data.name);
-        setProductPrice(data.price);
-        setProductDescription(data.description);
 
         if (data.productImages && data.productImages.length > 0) {
           // convert string array to object array
@@ -44,10 +43,6 @@ export default function EditProductPage() {
 
     fetchProduct();
   }, [id]);
-  const categoryMap = {
-    "68233cfb38b1873688aa3f4d": "Turkey",
-    "6823585aef8a13a10a95fdbb": "Chicken",
-  };
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -65,23 +60,15 @@ export default function EditProductPage() {
       const formData = new FormData();
 
       formData.append("name", productName || product?.name);
-      formData.append("price", productPrice || product?.price);
-      formData.append(
-        "description",
-        productDescription || product?.description
-      );
-
-      const categoryName = categoryMap[product?.category] || "";
-      formData.append("categoryName", categoryName);
 
       if (selectedFiles.length > 0) {
         selectedFiles.forEach((file) => {
-          formData.append("productImages", file);
+          formData.append("image", file);
         });
       }
 
       const res = await networkInstance.put(
-        `/product/update-product/${id}`,
+        `/category/update-category/${id}`,
         formData,
         {
           headers: {
@@ -93,7 +80,10 @@ export default function EditProductPage() {
 
       if (res.status === 200) {
         setLoading(false);
-        setToast({ message: "Product updated successfully!", type: "success" });
+        setToast({
+          message: "Category updated successfully!",
+          type: "success",
+        });
       }
     } catch (err) {
       setLoading(false);
@@ -126,7 +116,7 @@ export default function EditProductPage() {
             onClose={() => setToast(null)}
           />
         )}
-        <h2 className="text-2xl font-bold">Edit Product</h2>
+        <h2 className="text-2xl font-bold">Edit Category</h2>
 
         <div>
           <div className="flex items-center gap-6">
@@ -136,7 +126,7 @@ export default function EditProductPage() {
                   width={500}
                   height={500}
                   src={srcObj.url}
-                  alt={`Pre ${idx + 1}`}
+                  alt={`Preview ${idx + 1}`}
                   className="w-full h-full object-cover rounded-md bg-gray-100"
                 />
                 <button
@@ -173,7 +163,7 @@ export default function EditProductPage() {
       <div className="w-[500px]">
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-semibold text-gray-700">
-            Product Name
+            Category Name
           </label>
           <input
             type="text"
@@ -184,34 +174,11 @@ export default function EditProductPage() {
           />
         </div>
 
-        <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-gray-700">Price</label>
-          <input
-            type="number"
-            className="border   border-gray-300 p-2 h-14 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Input Product Price"
-            value={productPrice}
-            onChange={(e) => setProductPrice(e.target.value)}
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label className="text-sm font-semibold text-gray-700">
-            Description
-          </label>
-          <textarea
-            type="text"
-            className="border   border-gray-300 p-2 h-14 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={productDescription}
-            onChange={(e) => setProductDescription(e.target.value)}
-          />
-        </div>
-
         <button
           onClick={updateProduct}
           className="py-2 w-full mt-5 text-center cursor-pointer text-white px-3 rounded-lg bg-[#f1c126]"
         >
-          Update Product
+          Update Category
         </button>
       </div>
     </AdminLayout>

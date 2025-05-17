@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaImage } from "react-icons/fa";
 import NetworkInstance from "../../api/NetworkInstance";
 import Toast from "../../_components/Toast";
 import AdminLayout from "../../_layouts/admin/AdminLayout";
@@ -15,9 +14,28 @@ export default function AdminUpload() {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [previews, setPreviews] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [categoryOptions, setCategoryOptions] = useState([]);
 
-  const categoryOptions = ["Turkey"];
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await networkInstance.get(
+          "/category/get-all-categories"
+        );
+        if (response?.data) {
+          setCategoryOptions(response.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+        setToast({
+          message: "Error loading categories",
+          type: "error",
+        });
+      }
+    }
 
+    fetchCategories();
+  }, []);
   const networkInstance = NetworkInstance();
 
   const handleFileChange = (e) => {
@@ -73,6 +91,9 @@ export default function AdminUpload() {
       });
 
       console.log("Product not added:", err);
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ": " + pair[1]);
+      }
     }
   };
 
@@ -149,14 +170,13 @@ export default function AdminUpload() {
             <option value="" disabled>
               Select Category
             </option>
-            {categoryOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
+            {categoryOptions.map((category) => (
+              <option key={category._id} value={category.name}>
+                {category.name}
               </option>
             ))}
           </select>
         </div>
-
         <div className="flex flex-col space-y-2">
           <label className="text-sm font-semibold text-gray-700">Price</label>
           <input
