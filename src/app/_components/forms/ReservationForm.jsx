@@ -54,7 +54,7 @@ const ReservationForm = () => {
           } catch (error) {
             console.error("Submission error:", error?.response?.data || error);
             setToast({
-              message: "Submission failed. Please try again.",
+              message: "Login to book reservation.",
               type: "error",
             });
           }
