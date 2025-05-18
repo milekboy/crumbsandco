@@ -1,9 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import NetworkInstance from "../../api/NetworkInstance";
 import Link from "next/link";
-
+import { CartContext } from "../../_components/CartContext";
 const MiniCart = () => {
+  const { cartCount } = useContext(CartContext);
   const [cartItems, setCartItems] = useState([]);
 
   const networkInstance = NetworkInstance();
@@ -13,11 +14,10 @@ const MiniCart = () => {
         const cartId = localStorage.getItem("cartId");
         if (!cartId) {
           console.log("No cart ID found.");
-          return;
         }
-        // console.log(cartId);
+
         const res = await networkInstance.get(`/cart/view/${cartId}`);
-        // console.log("Fetched cart:", res.data.items);
+
         setCartItems(res.data.items);
       } catch (err) {
         console.log("Error fetching cart:", err?.response?.data || err);
@@ -25,7 +25,7 @@ const MiniCart = () => {
     }
     getCart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartItems]);
+  }, [cartCount]);
   return (
     <>
       <div className="sb-minicart-content">
@@ -45,7 +45,7 @@ const MiniCart = () => {
             <div className="sb-card-tp">
               <h4 className="text-gray-600">{item.quantity}X</h4>
               <h4 className="sb-card-title">{item.productDetails.name}</h4>
-              <div className="sb-price">
+              <div className="sb-price px-2">
                 <sub>₦</sub> {item.productDetails.price * item.quantity}
               </div>
             </div>

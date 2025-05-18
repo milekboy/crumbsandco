@@ -8,8 +8,8 @@ import NetworkInstance from "../../api/NetworkInstance";
 import CartData from "@data/cart.json";
 
 const ProductItem = ({ item, index, marginBottom, moreType }) => {
-  const { cartCount } = useContext(CartContext);
-  const [cartTotal, setCartTotal] = useState(cartCount);
+  const { cartCount, setCartCount } = useContext(CartContext);
+
   const [quantity, setQuantity] = useState(1);
 
   const [toast, setToast] = useState(null);
@@ -18,11 +18,12 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
   const stars = ["", "", "", "", ""];
   useEffect(() => {
     const cartNumberEl = document.querySelector(".sb-cart-number");
-    cartNumberEl.innerHTML = cartTotal;
-  }, [cartTotal]);
+    cartNumberEl.innerHTML = cartCount;
+  }, [cartCount]);
 
   const addToCart = async (e) => {
     e.preventDefault();
+
     const cartNumberEl = document.querySelector(".sb-cart-number");
     cartNumberEl.classList.add("sb-added");
     e.currentTarget.classList.add("sb-added");
@@ -45,6 +46,8 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
     const existingCartId = localStorage.getItem("cartId");
     if (existingCartId) {
       payload.cartId = existingCartId;
+    } else {
+      setCartCount((prev) => prev + 1);
     }
 
     try {
@@ -57,12 +60,12 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
       if (response?.status === 200 || response?.status === 201) {
         fetchCartCount();
         const newCartId = response.data?.cartId;
+
         if (newCartId) {
           localStorage.setItem("cartId", newCartId);
         }
-        setToast({ message: "Product added to cart!", type: "success" });
 
-        // Optional: update bubble count in DOM
+        setToast({ message: "Product added to cart!", type: "success" });
       }
     } catch (err) {
       console.error("Not added to cart:", err?.response?.data || err, payload);

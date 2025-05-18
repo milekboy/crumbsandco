@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -8,8 +9,6 @@ import NetworkInstance from "../../../api/NetworkInstance";
 import PageBanner from "@components/PageBanner";
 import ReviewItem from "@components/reviews/ReviewItem";
 import ProductImage from "@components/products/ProductImage";
-import ProductButtons from "@components/products/ProductButtons";
-import CallToActionTwoSection from "@components/sections/CallToActionTwo";
 import ProductsData from "@data/products.json";
 
 const ProductsSlider = dynamic(() => import("@components/sliders/Products"), {
@@ -21,7 +20,7 @@ const ProductTabs = dynamic(() => import("@components/products/ProductTabs"), {
 
 const Products = () => {
   const params = useParams();
-  const { fetchCartCount } = useContext(CartContext);
+  const { fetchCartCount, setCartCount } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
   const [cartTotal, setCartTotal] = useState(0);
   const [toast, setToast] = useState(null);
@@ -44,29 +43,6 @@ const Products = () => {
   if (!product) {
     return <div className="text-center text-xl">Loading Product...</div>;
   }
-
-  const ProductAtts = () => {
-    const AttsData = [
-      { label: "Numquam", value: "1 pack" },
-      { label: "Cupiditate", value: "150g" },
-      { label: "Adipisicing", value: "500g" },
-      { label: "Dolorem obcaecati", value: "3 Teaspoon" },
-      { label: "Porro", value: "2 pack" },
-      { label: "Facilis", value: "1kg" },
-      { label: "Goluptatem", value: "1 Teaspoon" },
-      { label: "Vel fuga", value: "300g" },
-    ];
-    return (
-      <ul className="sb-list">
-        {AttsData.map((item, i) => (
-          <li key={i}>
-            <b>{item.label}</b>
-            <span>{item.value}</span>
-          </li>
-        ))}
-      </ul>
-    );
-  };
 
   const ProductDescription = () => (
     <div className="sb-text">{product.description}</div>
@@ -116,6 +92,8 @@ const Products = () => {
     const existingCartId = localStorage.getItem("cartId");
     if (existingCartId) {
       payload.cartId = existingCartId;
+    } else {
+      setCartCount((prev) => prev + 1);
     }
 
     try {
@@ -198,10 +176,10 @@ const Products = () => {
                       <div className="sb-number">01</div>
                       <div className="sb-feature-text">
                         <h4 className="sb-mb-15">
-                          Add to the cart and place an order
+                          Add to your cart and place your order
                         </h4>
                         <p className="sb-text sb-text-sm">
-                          Porro comirton pera nemo veniam
+                          Quick and simple checkout experience
                         </p>
                       </div>
                     </div>
@@ -210,11 +188,9 @@ const Products = () => {
                     <div className="sb-features-item sb-features-item-sm sb-mb-30">
                       <div className="sb-number">02</div>
                       <div className="sb-feature-text">
-                        <h4 className="sb-mb-15">
-                          Enter your phone number and address
-                        </h4>
+                        <h4 className="sb-mb-15">Enter delivery information</h4>
                         <p className="sb-text sb-text-sm">
-                          Eligendi adipisci numquam.
+                          Add your phone number and address
                         </p>
                       </div>
                     </div>
@@ -224,22 +200,17 @@ const Products = () => {
                       <div className="sb-number">03</div>
                       <div className="sb-feature-text">
                         <h4 className="sb-mb-15">
-                          Enjoy your favorite food at home!
+                          Receive and enjoy your food!
                         </h4>
                         <p className="sb-text sb-text-sm">
-                          Nnecessitatibus praesentium
+                          Fast delivery to your doorstep
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* <ProductButtons
-                  productId={product._id}
-                  categoryId={product.category}
-                /> */}
                 <div className="sb-buttons-frame">
-                  {/* Quantity Controls */}
                   <div className="sb-input-number-frame">
                     <div
                       className="sb-input-number-btn sb-sub"
@@ -266,7 +237,6 @@ const Products = () => {
                     </div>
                   </div>
 
-                  {/* Add to Cart Button */}
                   <a href="#." className="sb-btn sb-atc" onClick={addToCart}>
                     <span className="sb-icon">
                       <img src="/img/ui/icons/cart.svg" alt="icon" />
@@ -297,14 +267,12 @@ const Products = () => {
 
       <ProductsSlider
         items={ProductsData.items}
-        title="It is usually bought together with this product"
-        description="Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi."
+        title="Customers also bought"
+        description="Explore more items that pair well with this product."
         button={0}
         slidesPerView={4}
         itemType="product"
       />
-
-      {/* <CallToActionTwoSection /> */}
     </>
   );
 };

@@ -16,7 +16,7 @@ const DefaultHeader = ({ setLoading }) => {
   const [miniCart, setMiniCart] = useState(false);
   const [miniSidebar, setMiniSidebar] = useState(false);
   const asPath = usePathname();
-  const { cartCount } = useContext(CartContext);
+  const { cartCount, fetchCartCount } = useContext(CartContext);
 
   const isPathActive = (path) => {
     return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
@@ -145,8 +145,9 @@ const DefaultHeader = ({ setLoading }) => {
         {/* info bar end */}
         {/* minicart */}
         <div className={`sb-minicart ${miniCart ? "sb-active" : ""}`}>
-          <MiniCart />
+          {miniCart && <MiniCart key={Date.now()} />}
         </div>
+
         {/* minicart end */}
       </div>
       {/* top bar end */}

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import NetworkInstance from "../../api/NetworkInstance";
 import PageBanner from "@components/PageBanner";
 import ProductsGrid from "@components/products/ProductsGrid";
-import PromoSection from "@components/sections/Promo";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
