@@ -63,7 +63,7 @@ const Products = () => {
       </section>
       {/* shop list end */}
 
-      <PromoSection />
+      {/* <PromoSection /> */}
     </>
   );
 };

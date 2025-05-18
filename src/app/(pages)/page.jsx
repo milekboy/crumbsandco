@@ -30,13 +30,14 @@ function Home1() {
       {loading && <LoadingOverlay />}
       <HeroSection type={1} />
       <AboutSection />
-      <CategoriesSection />
+
       <ProductsSlider
         items={Products.collection["popular"]}
         slidesPerView={4}
         setLoading={setLoading}
       />
-      <TeamSection />
+      <CategoriesSection />
+      {/* <TeamSection /> */}
       {/* <CallToActionSection /> */}
     </>
   );

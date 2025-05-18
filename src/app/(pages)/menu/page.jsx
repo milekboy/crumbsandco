@@ -152,7 +152,7 @@ const Menu1 = () => {
       </section>
       {/* menu section 4 end */}
 
-      <PromoSection />
+      {/* <PromoSection /> */}
     </>
   );
 };

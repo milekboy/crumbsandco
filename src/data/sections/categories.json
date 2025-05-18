@@ -1,6 +1,6 @@
 {
   "title": "What do you <span>like today?</span>",
-  "description": "Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.",
+  "description": "Discover a variety of fresh, delicious options<br>perfect for any craving or occasion.",
   "button": {
     "link": "/shop",
     "label": "Go shopping now"
@@ -9,25 +9,25 @@
     {
       "image": "/img/categories/1.png",
       "title": "Starters",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "text": "Kick off your meal with a range of flavorful appetizers and light bites.",
       "link": "/products"
     },
     {
       "image": "/img/categories/2.png",
       "title": "Main dishes",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "text": "Satisfy your hunger with our hearty and expertly prepared main courses.",
       "link": "/products"
     },
     {
       "image": "/img/categories/3.png",
       "title": "Drinks",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "text": "Quench your thirst with our refreshing selection of beverages and cocktails.",
       "link": "/products"
     },
     {
       "image": "/img/categories/4.png",
       "title": "Desserts",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "text": "Indulge in sweet, decadent treats to perfectly end your meal.",
       "link": "/products"
     }
   ]
