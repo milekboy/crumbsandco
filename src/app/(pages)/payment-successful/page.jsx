@@ -39,7 +39,7 @@ const PaymentSuccessful = () => {
               <div className="col-lg-6">
                 <div className="sb-illustration-1-404">
                   <img
-                    src="/img/illustrations/man.png"
+                    src="/img/illustrations/girl.png"
                     alt="man"
                     className="sb-man"
                   />
