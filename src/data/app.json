@@ -95,24 +95,9 @@
   },
   "social": [
     {
-      "link": "https://twitter.com",
-      "title": "Twitter",
-      "icon": "fab fa-twitter"
-    },
-    {
-      "link": "https://instagram.com",
+      "link": "https://www.instagram.com/crumbsncolagos?igsh=aGQ5MGY5ZGk4d2Jv",
       "title": "Instagram",
       "icon": "fab fa-instagram"
-    },
-    {
-      "link": "https://facebook.com",
-      "title": "Facebook",
-      "icon": "fab fa-facebook-f"
-    },
-    {
-      "link": "https://youtube.com",
-      "title": "Youtube",
-      "icon": "fab fa-youtube"
     }
   ],
   "instagram": [
