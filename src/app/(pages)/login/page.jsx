@@ -1,4 +1,5 @@
 "use client";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import Link from "next/link";
 import NetworkInstance from "../../api/NetworkInstance";
@@ -9,6 +10,8 @@ import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
@@ -116,13 +119,21 @@ const Login = () => {
                       <label className="block mt-4 mb-2 font-medium">
                         Password
                       </label>
-                      <input
-                        type="password"
-                        className="w-full h-12 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="********"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="w-full h-12 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                          placeholder="********"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <span
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute right-3 top-3.5 cursor-pointer text-gray-500"
+                        >
+                          {showPassword ? <FiEyeOff /> : <FiEye />}
+                        </span>
+                      </div>
 
                       <div className="flex items-center mt-4">
                         <input

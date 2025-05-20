@@ -72,8 +72,7 @@ export default function OrderReview() {
             <div className="space-y-2">
               <p className="font-semibold">Address</p>
               <p className="text-sm text-gray-600">
-                {shipping.street}, {shipping.city}, {shipping.state},{" "}
-                {shipping.country}
+                {shipping.street}, {shipping.state}, {shipping.country}
               </p>
             </div>
             <div className="space-y-2">

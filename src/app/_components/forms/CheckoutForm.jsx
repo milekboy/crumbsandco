@@ -13,9 +13,9 @@ const CheckoutForm = ({ onSuccess }) => {
         fullName: "",
         email: "",
         phoneNumber: "",
-        country: "",
-        city: "",
-        state: "",
+        country: "Nigeria",
+        city: "Lagos",
+        state: "Lagos",
         street: "",
         apartment: "",
       }}
@@ -90,49 +90,7 @@ const CheckoutForm = ({ onSuccess }) => {
             </div>
 
             <div className="col-lg-6">
-              <div className="sb-group-input">
-                <input
-                  type="text"
-                  placeholder=" "
-                  name="country"
-                  required
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.country}
-                />
-                <span className="sb-bar"></span>
-                <label>Country</label>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="sb-group-input">
-                <input
-                  type="text"
-                  placeholder=" "
-                  name="city"
-                  required
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.city}
-                />
-                <span className="sb-bar"></span>
-                <label>City</label>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="sb-group-input">
-                <input
-                  type="text"
-                  placeholder=" "
-                  name="state"
-                  required
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.state}
-                />
-                <span className="sb-bar"></span>
-                <label>State / Province</label>
-              </div>
+              <p className="sb-real p-2 cursor-not-allowed">Lagos State</p>
             </div>
             <div className="col-lg-6">
               <div className="sb-group-input">

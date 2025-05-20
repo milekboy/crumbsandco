@@ -51,7 +51,7 @@ export default function Otp() {
 
         setTimeout(() => {
           setToast(null);
-          router.push("/");
+          router.push("/registration-successful");
         }, 1500);
       }
     } catch (error) {

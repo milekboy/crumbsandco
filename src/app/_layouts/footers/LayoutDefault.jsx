@@ -22,9 +22,13 @@ const DefaultFooter = () => {
             </Link>
             <ul className="sb-social">
               {AppData.social.map((item, key) => (
-                <li key={`footer-social-item-${key}`}>
+                <li key={`footer-social-item-${key} `}>
                   <a href={item.link} target="_blank" title={item.title}>
-                    <i className={item.icon}></i>
+                    <div className="flex gap-1">
+                      <i className={`mt-1 ${item.icon}`}></i>
+
+                      <p className="-mt-2">@crumbsncolagos</p>
+                    </div>
                   </a>
                 </li>
               ))}

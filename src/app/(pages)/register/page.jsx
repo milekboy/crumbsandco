@@ -1,4 +1,5 @@
 "use client";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import Link from "next/link";
 import NetworkInstance from "../../api/NetworkInstance";
@@ -17,7 +18,8 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
   const router = useRouter();
@@ -185,35 +187,49 @@ const Register = () => {
                             <option value="Other">Other</option>
                           </select>
                         </div>
-                        <div className="w-1/2">
+                        <div className="w-1/2 relative">
                           <label className="block font-medium mb-1">
                             Password
                           </label>
                           <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
-                            className="w-full h-12 p-2 border rounded-lg"
+                            className="w-full h-12 p-2 border rounded-lg pr-10"
                             placeholder="Enter Password"
                           />
+                          <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-10 cursor-pointer text-gray-500"
+                          >
+                            {showPassword ? <FiEyeOff /> : <FiEye />}
+                          </span>
                         </div>
                       </div>
 
                       {/* Row 4: Confirm Password */}
                       <div className="flex gap-4 mb-4">
-                        <div className="w-1/2">
+                        <div className="lg:w-1/2 relative">
                           <label className="block font-medium mb-1">
                             Confirm Password
                           </label>
                           <input
-                            type="password"
+                            type={showConfirmPassword ? "text" : "password"}
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
-                            className="w-full h-12 p-2 border rounded-lg"
+                            className="w-full h-12 p-2 border rounded-lg pr-10"
                             placeholder="Confirm Password"
                           />
+                          <span
+                            onClick={() =>
+                              setShowConfirmPassword(!showConfirmPassword)
+                            }
+                            className="absolute right-3 top-10 cursor-pointer text-gray-500"
+                          >
+                            {showConfirmPassword ? <FiEyeOff /> : <FiEye />}
+                          </span>
                         </div>
                         <div className="w-1/2" />
                       </div>

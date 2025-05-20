@@ -81,7 +81,7 @@ const DefaultHeader = ({ setLoading }) => {
                       >
                         {item.label}
                       </Link>
-                      {item.children.length > 0 && (
+                      {item.children.length > 1 && (
                         <ul
                           className={openSubMenu === index ? "sb-active" : ""}
                         >

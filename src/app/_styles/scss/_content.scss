@@ -611,7 +611,22 @@ contact
     border: dotted 3px $c3;
   }
 }
+.sb-real {
+  height: 50px;
+  position: relative;
 
+  // padding: 0 20px;
+  font-size: 14px;
+  background-color: $c6;
+  display: block;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  color: $c2;
+  font-weight: normal;
+
+  border-bottom: solid 1px $c3;
+}
 .sb-group-input {
   position: relative;
   margin-bottom: 30px;
