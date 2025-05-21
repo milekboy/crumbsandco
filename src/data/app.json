@@ -40,11 +40,11 @@
       },
       {
         "label": "Menu",
-        "link": "/menu",
+        "link": "/menu-2",
         "children": [
           {
             "label": "Menu",
-            "link": "/menu"
+            "link": "/menu-2"
           }
         ]
       },
