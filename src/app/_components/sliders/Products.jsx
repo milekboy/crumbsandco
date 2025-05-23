@@ -85,7 +85,8 @@ const ProductsSlider = ({
               {/* button */}
               {button != 0 && (
                 <Link
-                  href={button.link ? button.link : Data.button.link}
+                  onClick={() => setLoading(true)}
+                  href="menu-2"
                   className="sb-btn"
                 >
                   <span className="sb-icon">
